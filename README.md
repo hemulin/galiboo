@@ -1,6 +1,5 @@
-# poc-starter-app
-Starter template to quickly scaffold web app with Nuxt (+Buefy) on the front and Flask on the back
-
+# Galiboo front
+Simple app to test [Galiboo](galiboo.com) API
 ## Setup front
 ```
 cd front
