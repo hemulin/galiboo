@@ -34,9 +34,18 @@ export default {
       ]
     }
   },
+  mounted () {
+    this.exampleLog();
+  },
   methods: {
     toggleMobileNav () {
       this.showNav = !this.showNav
+    },
+    exampleLog() {
+      this.$log.debug('foo')
+      this.$log.info({foo: 'bar'})
+      this.$log.warn('warning!')
+      this.$log.error('Error', 500)
     }
   }
 }
