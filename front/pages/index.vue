@@ -15,6 +15,8 @@ section.section
             b-icon(:icon='feature.icon', size='is-large', type='is-danger')
         footer.card-footer
           .card-footer-item(v-html='feature.content')
+    .column
+      h2 Get resp: {{ resp }}
 </template>
 
 <script>
@@ -23,6 +25,9 @@ import BLogo from '@/components/Logo'
 export default {
   name: 'HomePage',
   components: {BLogo},
+  async fetch ({ store }) {
+    await store.dispatch('getResp')
+  },
   data() {
       return {
           features: [
@@ -32,6 +37,12 @@ export default {
               { icon: 'arrange-bring-to-front', title: 'Lightweight', content: `<span>No other internal dependency</span>` }
           ]
       }
+  },
+  computed: {
+    resp() {
+      // `this` points to the vm instance
+      return this.$store.getters.resp;
+    }
   }
 }
 </script>

@@ -35,7 +35,6 @@ export default {
     }
   },
   mounted () {
-    this.exampleLog();
   },
   methods: {
     toggleMobileNav () {
