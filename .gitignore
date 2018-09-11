@@ -12,3 +12,5 @@
 
 # IDE
 *.idea
+
+*.pyc
