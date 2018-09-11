@@ -1,0 +1,52 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+// ################################################################################################
+// All supported variables to override are here: https://bulma.io/documentation/overview/variables/
+// ################################################################################################
+
+// Set your colors
+$primary: #4c5b5c;
+// $primary: #ffd166;
+// $primary-invert: findColorInvert($primary);
+// $twitter: #4099ff;
+// $twitter-invert: findColorInvert($twitter);
+
+$red: #ff715b;
+$red-invert: findColorInvert($red);
+$orange: #f9cb40;
+$orange-invert: findColorInvert($orange);
+$green: #b9d653;
+$green-invert: findColorInvert($green);
+$blue: #2744b8;
+$blue-invert: findColorInvert($blue);
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+// $colors: ();
+$colors: (
+  "primary": ($primary, $primary-invert),
+  "info": ($blue, $blue-invert),
+  "success": ($green, $green-invert),
+  "warning": ($orange, $orange-invert),
+  "danger": ($red, $red-invert)
+);
+// $colors: (
+//   "white": ($white, $black),
+//   "black": ($black, $white),
+//   "light": ($light, $light-invert),
+//   "dark": ($dark, $dark-invert),
+//   "primary": ($primary, $primary-invert),
+//   "info": ($info, $info-invert),
+//   "success": ($success, $success-invert),
+//   "warning": ($warning, $warning-invert),
+//   "danger": ($danger, $danger-invert)
+// );
+
+// Links
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+
+// Import Bulma and Buefy styles
+@import "~bulma/bulma";
+@import "~buefy/src/scss/buefy";
