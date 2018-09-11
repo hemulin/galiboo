@@ -1,47 +1,56 @@
 <template lang="pug">
 
 section.section
-  .columns.is-mobile
-    .column(v-for='(feature, i) of features', :key='i')
-      .card
-        header.card-header
-          p.card-header-title.has-text-grey {{ feature.title }}
-        .card-content
-          .content.has-text-centered
-            b-icon(:icon='feature.icon', size='is-large', type='is-primary')
-            b-icon(:icon='feature.icon', size='is-large', type='is-info')
-            b-icon(:icon='feature.icon', size='is-large', type='is-success')
-            b-icon(:icon='feature.icon', size='is-large', type='is-warning')
-            b-icon(:icon='feature.icon', size='is-large', type='is-danger')
-        footer.card-footer
-          .card-footer-item(v-html='feature.content')
+  .columns
     .column
       h2 Get resp: {{ resp }}
+  .columns
+    .column
+      circle-slider(
+        v-model='val4',
+        :circle-width='16',
+        :progress-width='20',
+        :knob-radius='20',
+        :progress-color="progrssColor()",
+        :side="200")
 </template>
 
 <script>
-import BLogo from '@/components/Logo'
-
+import Vue from 'vue'
+import VueCircleSlider from 'vue-circle-slider'
+Vue.use(VueCircleSlider)
 export default {
   name: 'HomePage',
-  components: {BLogo},
+  components: {
+    circleslider: VueCircleSlider.VueCircleSlider},
   async fetch ({ store }) {
     await store.dispatch('getResp')
   },
   data() {
       return {
-          features: [
-              { icon: 'github-circle', title: 'Free', content: `<span>Open source on <a href="https://github.com/buefy/buefy"> GitHub</a></span>` },
-              { icon: 'cellphone-link', title: 'Responsive', content: `<span><b class="has-text-grey">Every</b> component is responsive</span>` },
-              { icon: 'alert-decagram', title: 'Modern', content: `<span>Built with <a href="https://vuejs.org/">Vue.js</a> and <a href="http://bulma.io/">Bulma</a></span>` },
-              { icon: 'arrange-bring-to-front', title: 'Lightweight', content: `<span>No other internal dependency</span>` }
-          ]
+          val4: 50,
       }
   },
   computed: {
     resp() {
-      // `this` points to the vm instance
       return this.$store.getters.resp;
+    }
+  },
+  methods: {
+    progrssColor() {
+      function getColor(hex1, hex2, val) {
+        var hex = function(x) {
+            x = x.toString(16);
+            return (x.length == 1) ? '0' + x : x;
+        };
+        var r = Math.ceil(parseInt(hex1.substring(0,2), 16) * val + parseInt(hex2.substring(0,2), 16) * (1-val));
+        var g = Math.ceil(parseInt(hex1.substring(2,4), 16) * val + parseInt(hex2.substring(2,4), 16) * (1-val));
+        var b = Math.ceil(parseInt(hex1.substring(4,6), 16) * val + parseInt(hex2.substring(4,6), 16) * (1-val));
+
+        var middle = hex(r) + hex(g) + hex(b);
+        return '#'+middle;
+      }
+      return getColor('ff715b', 'b9d653', this.val4/100);
     }
   }
 }

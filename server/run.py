@@ -5,7 +5,7 @@ sys.path.append('./')
 
 from livereload import Server
 
-from galiboo import app
+from myapp import app
 
 def main(init_logger=True):
     if init_logger:

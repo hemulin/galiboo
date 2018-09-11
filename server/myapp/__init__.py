@@ -1,11 +1,12 @@
 from flask import Flask
 from flask_cors import CORS
 
+
 app = Flask(__name__)
 CORS(app)
 app.logger.info('app setup finished')
 
-from galiboo import views
+from myapp import views
 
 class InvalidUsage(Exception):
     status_code = 400
