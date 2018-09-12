@@ -27,4 +27,5 @@ Server is serving request on port 5000
 
 Front is serving on port 3000
 
-> Ether tips are warmly welcomed: 0x5e58ae8b59fe9ef291c9bb6ae20af5a8583c71a2
+---
+_Ether tips are warmly welcomed:_ `0x5e58ae8b59fe9ef291c9bb6ae20af5a8583c71a2`
