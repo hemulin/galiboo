@@ -22,7 +22,6 @@ div
     .column.is-10
       nuxt
 </template>
-
 <script>
 export default {
   data() {
@@ -30,7 +29,8 @@ export default {
       showNav: false,
       items: [
         { title: 'Home', icon: 'home', to: { name: 'index' } },
-        { title: 'Inspire', icon: 'lightbulb', to: { name: 'inspire' } }
+        { title: 'Search by Mood', icon: 'lightbulb', to: { name: 'searchByMood' } },
+        { title: 'Search by Similiar', icon: 'lightbulb', to: { name: 'searchSimiliar' } }
       ]
     }
   },

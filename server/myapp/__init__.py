@@ -1,6 +1,12 @@
+from pathlib import Path
+
+from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
 
+# env_path = Path('.') / '.env'
+# load_dotenv(dotenv_path=env_path, verbose=True)
+load_dotenv(verbose=True)
 
 app = Flask(__name__)
 CORS(app)

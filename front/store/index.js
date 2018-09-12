@@ -5,7 +5,8 @@ const createStore = () => {
     state: {
       counter: 0,
       pages: [],
-      resp: ''
+      resp: '',
+      youtubeResults: []
     },
     mutations: {
       increment(state) {
@@ -16,6 +17,9 @@ const createStore = () => {
       },
       updateResp: (state, resp) => {
         state.resp = resp;
+      },
+      updateYoutubeResults: (state, data) => {
+        state.youtubeResults = data;
       }
     },
     actions: {
@@ -25,9 +29,17 @@ const createStore = () => {
           2: { name: 'search' }
         });
       },
+      async searchYoutube({ commit }, query) {
+        try {
+          let resp = await this.$axios.$get(`/search_youtube?q=${query}`);
+          commit('updateYoutubeResults', resp);
+        } catch (e) {
+          // this.$log.error('getResp: backend call error', e);
+          console.log('searchYoutube: backend call error', e);
+        }
+      },
       async getResp({ commit }) {
         try {
-          console.log('test2');
           let resp = await this.$axios.$get(`/hello`);
           commit('updateResp', resp);
         } catch (e) {
@@ -42,6 +54,9 @@ const createStore = () => {
       },
       resp(state) {
         return state.resp;
+      },
+      youtubeResults(state) {
+        return state.youtubeResults;
       }
     }
   });

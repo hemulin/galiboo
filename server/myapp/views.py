@@ -8,7 +8,6 @@ from flask import jsonify
 from flask import render_template
 from flask import request
 from flask import Response
-from flask_dotenv import DotEnv
 # from flask_httpauth import HTTPBasicAuth
 from werkzeug.contrib.cache import SimpleCache
 
@@ -16,10 +15,10 @@ from myapp import app
 # from galiboo import Galiboo
 
 from myapp.services import get_hello_world
+from myapp.youtube_services import youtube_search
 
 logger = logging.getLogger(__name__)
 cache = SimpleCache()
-env = DotEnv(app)
 # galiboo_client = Galiboo(env['GALIBOO_KEY'])
 
 # auth = HTTPBasicAuth()
@@ -52,5 +51,13 @@ def hello_world():
 def hello_world2():
     if request.method == 'GET':
         return jsonify(get_hello_world())
+    else:
+        raise InvalidUsage('Only GET is allowed', status_code=400)
+
+@app.route('/api/v1/search_youtube', methods=['GET'])
+def search_youtube():
+    if request.method == 'GET':
+        q = request.args.get('q', '')
+        return jsonify(youtube_search(q))
     else:
         raise InvalidUsage('Only GET is allowed', status_code=400)
