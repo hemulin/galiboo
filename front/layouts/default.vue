@@ -30,11 +30,20 @@ export default {
       items: [
         { title: 'Home', icon: 'home', to: { name: 'index' } },
         { title: 'Search by Mood', icon: 'lightbulb', to: { name: 'searchByMood' } },
-        { title: 'Search by Similiar', icon: 'lightbulb', to: { name: 'searchSimiliar' } }
+        { title: 'Search Galiboo', icon: 'lightbulb', to: { name: 'searchGaliboo' } },
+        { title: 'Galiboo Tracks', icon: 'lightbulb', to: { name: 'searchGalibooTrack' } },
+        { title: 'Galiboo Tracks By Artist', icon: 'lightbulb', to: { name: 'searchGalibooTrackByArtist' } },
+        { title: 'Search Youtube', icon: 'lightbulb', to: { name: 'searchYoutube' } },
       ]
     }
   },
   mounted () {
+  },
+  watch: {
+    $route () {
+      // console.log('route changed', this.$route)
+      this.$store.commit('updateGalibooResults', [])
+    }
   },
   methods: {
     toggleMobileNav () {

@@ -13,18 +13,27 @@ section.section
         :knob-radius='20',
         :progress-color="progrssColor()",
         :side="200")
+  .columns.is-multiline.is-mobile
+    .column.is-full-mobile.is-half-tablet.is-one-third-desktop.is-one-quarter-widescreen.is-one-fifth-fullhd.is-pulled-left(v-for="res in youtubeResults")
+      VideoCard(:title="res.title", :url="res.url", :thumbnail="res.thumbnail", :videoId="res.videoId")
+
 </template>
 
 <script>
 import Vue from 'vue'
 import VueCircleSlider from 'vue-circle-slider'
+import VideoCard from '@/components/VideoCard'
+
 Vue.use(VueCircleSlider)
 export default {
   name: 'HomePage',
   components: {
-    circleslider: VueCircleSlider.VueCircleSlider},
+    circleslider: VueCircleSlider.VueCircleSlider,
+    VideoCard
+  },
   async fetch ({ store }) {
     await store.dispatch('getResp')
+    await store.dispatch('searchYoutube', 'beatles')
   },
   data() {
       return {
@@ -35,6 +44,9 @@ export default {
   computed: {
     resp() {
       return this.$store.getters.resp;
+    },
+    youtubeResults() {
+      return this.$store.getters.youtubeResults;
     }
   },
   mounted() {

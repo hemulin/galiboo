@@ -3,9 +3,6 @@
 section.section
   .columns
     .column
-      h2 Get resp: {{ resp }}
-  .columns
-    .column
       circle-slider(
         v-model='val4',
         :circle-width='16',
@@ -31,22 +28,15 @@ export default {
     circleslider: VueCircleSlider.VueCircleSlider,
     VideoCard
   },
-  async fetch ({ store }) {
-    await store.dispatch('getResp')
-    await store.dispatch('searchYoutube', 'beatles')
-  },
+  async fetch ({ store }) {},
   data() {
       return {
-          val4: 50,
-          player: null
+          val4: 50
       }
   },
   computed: {
-    resp() {
-      return this.$store.getters.resp;
-    },
     youtubeResults() {
-      return this.$store.getters.youtubeResults;
+      return []
     }
   },
   mounted() {
