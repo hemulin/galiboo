@@ -1,45 +1,33 @@
 <template lang="pug">
-
-section.section
-  .columns
-    .column
-      circle-slider(
-        v-model='val4',
+div
+  circle-slider(
+        v-model='value',
         :circle-width='16',
         :progress-width='20',
         :knob-radius='20',
         :progress-color="progrssColor()",
         :side="200")
-  .columns.is-multiline.is-mobile
-    //- .column.is-full-mobile.is-half-tablet.is-one-third-desktop.is-one-quarter-widescreen.is-one-fifth-fullhd.is-pulled-left(v-for="res in youtubeResults")
-      VideoCard(:title="res.title", :url="res.url", :thumbnail="res.thumbnail", :videoId="res.videoId")
-
+  .value-display {{ value }}%
 </template>
-
 <script>
 import Vue from 'vue'
 import VueCircleSlider from 'vue-circle-slider'
-import VideoCard from '@/components/VideoCard'
-
 Vue.use(VueCircleSlider)
 export default {
-  name: 'HomePage',
   components: {
-    circleslider: VueCircleSlider.VueCircleSlider,
-    VideoCard
+    circleslider: VueCircleSlider.VueCircleSlider
   },
-  async fetch ({ store }) {},
-  data() {
-      return {
-          val4: 50
-      }
+  props: {
+    // id: String,
+    // spotifyId: String,
+    // artist: String,
+    // title: String,
+    // src: String
   },
-  computed: {
-    youtubeResults() {
-      return []
+  data () {
+    return {
+      value: 0
     }
-  },
-  mounted() {
   },
   methods: {
     progrssColor() {
@@ -55,9 +43,15 @@ export default {
         var middle = hex(r) + hex(g) + hex(b);
         return '#'+middle;
       }
-      return getColor('ff715b', 'b9d653', this.val4/100);
+      return getColor('ff715b', 'b9d653', this.value/100);
     }
   }
 }
 </script>
-
+<style lang="scss" scoped>
+.value-display {
+    margin: -8rem 0rem 0rem 5rem;
+    font-size: 2rem;
+    font-weight: 800;
+}
+</style>
