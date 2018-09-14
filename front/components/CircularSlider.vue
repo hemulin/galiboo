@@ -1,5 +1,6 @@
 <template lang="pug">
 div
+  .title {{ title }}
   circle-slider(
         v-model='value',
         :circle-width='16',
@@ -18,10 +19,10 @@ export default {
     circleslider: VueCircleSlider.VueCircleSlider
   },
   props: {
+    title: String
     // id: String,
     // spotifyId: String,
     // artist: String,
-    // title: String,
     // src: String
   },
   data () {

@@ -1,4 +1,8 @@
 
+def get_track_metadata(client, track_id):
+    return client.track.metadata(track_id) # Charlie Puth's "Attention"
+
+
 def smart_search(client, q):
   tracks = client.track.smart_search(q)
   if not tracks['success']:

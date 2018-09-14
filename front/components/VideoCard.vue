@@ -18,7 +18,7 @@ export default {
   },
   data () {
     return {
-      src: `https://www.youtube.com/embed/${this.videoId}?autoplay=0`
+      src: `https://www.youtube.com/embed/${this.videoId}?rel=0&autoplay=0`
     }
   }
 }

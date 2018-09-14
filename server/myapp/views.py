@@ -100,3 +100,11 @@ def search_galiboo_similiar():
     else:
         raise InvalidUsage('Only GET is allowed', status_code=400)
 
+@app.route('/api/v1/get_galiboo_metadata', methods=['GET'])
+def get_galiboo_metadata():
+    if request.method == 'GET':
+        track_id = request.args.get('track_id', '')
+        return jsonify(galiboo_services.get_track_metadata(galiboo_client, track_id))
+    else:
+        raise InvalidUsage('Only GET is allowed', status_code=400)
+
