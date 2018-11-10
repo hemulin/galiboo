@@ -7,6 +7,7 @@
     //- figure.image.is-4by3
     audio(controls='')
       source(:src='src', type='audio/mpeg')
+    //- av-line(:line-width='2', line-color='lime', :audio-src='src')
   footer.card-footer
     p.card-footer-item
       span
@@ -19,7 +20,12 @@
         button.button.is-primary(@click="searchSimiliar") Search
 </template>
 <script>
+import AudioVisual from 'vue-audio-visual'
+import AvLine from '~/node_modules/vue-audio-visual/src/components/AvLine.js'
 export default {
+  components: {
+    'av-line': AvLine
+  },
   props: {
     id: String,
     spotifyId: String,
