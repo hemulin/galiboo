@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
-    "nuxt": "^1.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-buefy": "^0.2.0",
     "nuxt-logger": "^0.2.0",
     "nuxt-sass-resources-loader": "^2.0.5",
